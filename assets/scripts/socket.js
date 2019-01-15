@@ -18,14 +18,35 @@ cc.Class({
 	
 	testLeafServer : function()
 	{
+		
 		console.log("test leafserver");
         var self = this;
+		self.webSocketRes.string = "";
         var ws = new WebSocket("ws://127.0.0.1:3653");
+		ws.binaryType = "arraybuffer"
 		ws.onopen = function() 
 		{
 			ws.send(JSON.stringify({Hello:{
 				Name: 'leaf'
 			}}))
+		}
+		
+		ws.onmessage = function(event)
+		{
+			cc.log("---------------------");
+			//cc.log(event);
+			//self.webSocketRes.string = self.webSocketRes.string + "message" + "--" + event;
+			var decoder = new window.TextDecoder("utf-8")
+			var data = JSON.parse(decoder.decode(event.data));
+			cc.log(data);
+			self.webSocketRes.string = self.webSocketRes.string + "message" + "--" + data.Hello.Name;
+		}
+		
+		ws.onclose = function(event)
+		{
+			cc.log("---------------------");
+			cc.log(event.type);
+			self.webSocketRes.string = self.webSocketRes.string + "close" + "--" + event;
 		}
 	},
 	
