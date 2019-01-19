@@ -4,16 +4,27 @@ cc.Class({
     properties: 
 	{
 		webSocketRes:cc.Label,
+		chatNode : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () 
+	{
+		this.node.on('say-hello', function (msg) 
+		{
+			cc.log("1111111111111111");
+			console.log(msg);
+		});	
+	},
 
     start () 
 	{
 		//this.sendWebSocket();		
 		this.testLeafServer();
+		
+		this.chatNode.emit('say-hello', 'Hello, this is Cocos Creator');
+		cc.log("emit");
     },
 	
 	testLeafServer : function()
