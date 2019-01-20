@@ -9,6 +9,8 @@ cc.Class({
 		
 		ip : "127.0.0.1",
 		port : 3653,
+
+		username : "ie_songyudong",
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -36,7 +38,7 @@ cc.Class({
 			
 			self.inited = true;
 			self.ws.send(JSON.stringify({CSLogin:{
-					UserName:'song',
+					UserName:self.username,
 					Password:'111111'
 				}}))
 		};

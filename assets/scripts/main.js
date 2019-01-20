@@ -1,3 +1,4 @@
+var common = require("common");
 cc.Class({
     extends: cc.Component,
 
@@ -8,7 +9,10 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () 
+    {
+        
+    },
 
     start () 
     {

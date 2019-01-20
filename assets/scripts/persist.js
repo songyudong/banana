@@ -4,7 +4,7 @@ cc.Class({
 
     properties: 
     {
-        
+        block : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:

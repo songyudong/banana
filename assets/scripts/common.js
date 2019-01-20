@@ -17,4 +17,10 @@ module.exports =
     socket : null,
     persist : null,
     chatNode : null,
+    mainNode : null,
+
+    enableBlock:function(enable)
+    {
+        this.persist.block.active = enable;
+    }
 };
